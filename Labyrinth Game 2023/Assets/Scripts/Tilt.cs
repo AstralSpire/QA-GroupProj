@@ -42,12 +42,12 @@ public class Tilt : MonoBehaviour
 
         if (Input.GetAxis("Vertical") < -0.2f && (currentRot.x <= tiltMax || currentRot.x >= (359 - tiltMax))) //Up tilt with max tilt
         {
-            x += speed * Time.deltaTime;
+            x -= speed * Time.deltaTime;
         }
 
         if (Input.GetAxis("Vertical")  > 0.2f  && (currentRot.x >= (360 - tiltMax) || currentRot.x <= tiltMax + 1)) //Down tilt with max tilt
         {
-            x -= speed * Time.deltaTime;
+            x += speed * Time.deltaTime;
         }
 
         if (Input.GetAxis("Vertical") == 0 && x != 0) // Returns Up/Down tilt to middle tilt to middle when nothing is pressed
