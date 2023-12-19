@@ -8,7 +8,14 @@ public class GameController : MonoBehaviour
 {
     public GameObject ball;
     public GameObject title;
+    public GameObject complete;
     public GameObject startButton;
+    public GameObject BG;
+    public GameObject gameOverPanel;
+    public GameObject lives;
+    public GameObject lives1;
+    public GameObject lives2;
+    public GameObject lives3;
     private Tilt tilt;
     public int levelNumber = 1;
 
@@ -20,6 +27,9 @@ public class GameController : MonoBehaviour
 
         //UI
         startButton.SetActive(true);
+        complete.SetActive(false);
+        gameOverPanel.SetActive(false);
+        lives.SetActive(false);
         title.SetActive(true);
         tilt = GameObject.Find("Platform").GetComponent<Tilt>();
     }
@@ -35,15 +45,32 @@ public class GameController : MonoBehaviour
         ball.SetActive(true);
         startButton.SetActive(false);
         title.SetActive(false);
+        lives.SetActive(true);
+        lives3.SetActive(true);
         tilt.turnontilt();
+        BG.SetActive(false);
     }
-
+    public void Restart()
+    {
+        SceneManager.LoadScene("Level_1");
+    }
+    public void Quit()
+    {
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+        Application.Quit();
+    #endif 
+    }
 
     public void LevelComplete()
     { 
-            title.SetActive(true);
-            title.GetComponent<Text>().text = "Level "+ levelNumber+  " complete!";
+            complete.SetActive(true);
             ball.SetActive(false);
+            lives.SetActive(false);
+            lives1.SetActive(false);
+            lives2.SetActive(false);
+            lives3.SetActive(false);
 
         if (levelNumber < 3)
         {
