@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public GameObject ball;
     public GameObject title;
     public GameObject startButton;
-
+    private Tilt tilt;
     public int levelNumber = 1;
 
     private Text titleText;
@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
         //UI
         startButton.SetActive(true);
         title.SetActive(true);
-
+        tilt = GameObject.Find("Platform").GetComponent<Tilt>();
     }
 
     // Update is called once per frame
@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
         ball.SetActive(true);
         startButton.SetActive(false);
         title.SetActive(false);
+        tilt.turnontilt();
     }
 
 

@@ -179,6 +179,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_2
       objectReference: {fileID: 0}
+    - target: {fileID: 7968333126033852063, guid: 1933044070f38394b9d628a18bc8a3f7, type: 3}
+      propertyPath: m_Radius
+      value: 0.50060195
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968333126033852063, guid: 1933044070f38394b9d628a18bc8a3f7, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0031557253
+      objectReference: {fileID: 0}
     - target: {fileID: 7968333127789748275, guid: 1933044070f38394b9d628a18bc8a3f7, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
