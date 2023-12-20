@@ -16,14 +16,18 @@ public class GameController : MonoBehaviour
     public GameObject lives1;
     public GameObject lives2;
     public GameObject lives3;
+    public GameObject spawn;
     private Tilt tilt;
     public int levelNumber = 1;
+    private float lifepoints = 3;
 
     private Text titleText;
 
     void Start()
     {
         ball.SetActive(false);
+        spawn = GameObject.Find("spawn");
+        spawn.transform.position = ball.transform.position; 
 
         //UI
         startButton.SetActive(true);
@@ -37,7 +41,25 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void takeawayhealth()
+    {
+        ball.transform.position = spawn.transform.position;
+        lifepoints = lifepoints - 1;
         
+        updatehealth();
+    }
+    public void updatehealth()
+    {
+        if (lifepoints == 3) { lives3.SetActive(true); }
+        else if (lifepoints == 2) { lives2.SetActive(true);
+            lives3.SetActive(false);
+        }
+        else if (lifepoints == 1) { lives1.SetActive(true);
+            lives2.SetActive(false);
+        }
+        else { StartCoroutine(LoadLevelWithDelay(1)); }
     }
 
     public void StartGame()
@@ -85,7 +107,7 @@ public class GameController : MonoBehaviour
 
     public IEnumerator LoadLevelWithDelay(int levelNo)
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0f);
 
         SceneManager.LoadScene("Level_" + levelNo); // opens new scene
     }

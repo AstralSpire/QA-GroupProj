@@ -23,6 +23,11 @@ public class Ball : MonoBehaviour
         {
             SceneManager.LoadScene("Level_1");
         }
+        if (this.gameObject.transform.position.y < -10)
+        {
+            gameCont.takeawayhealth();
+
+        }
     }
 
     private void OnTriggerEnter(Collider col)
